@@ -110,17 +110,4 @@ for i in range(0, 16):
             'has_mortgage': has_mortgage[i]
             })
 
-    df.to_csv(csv_name[i])
-    BakuApartmentData = pd.concat([BakuApartmentData, df], ignore_index=True)
-
-BakuApartmentData.to_csv('BakuApartmentData')
-# df = pd.read_csv("binatable.csv")
-
-# df_visualization_prepared = DataPrepear(df)
-#
-# df.rename(str.lower, axis='columns', inplace=True)
-# df.rename(columns={"shape": "square", "shape_range": "square_range"}, inplace=True)
-# df.to_csv("binaaz.csv", index=False)
-
-
-
+df.to_csv('BakuApartmentData')
