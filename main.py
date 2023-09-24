@@ -2,12 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
-prices = []
-locations = []
-rooms = []
-squares = []
-floors = []
-
 headers = {
     "accept": "*/*",
     "user-agent": "Mozilla/5.0 (Linux; Android 8.0.0; SM-G955U Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) "
@@ -60,6 +54,11 @@ csv_name = [
 BakuApartmentData = pd.DataFrame()
 
 for i in range(0, 16):
+    prices = []
+    locations = []
+    rooms = []
+    squares = []
+    floors = []
     page = 1
     print('Start of    ' + urls[i] + '    scaning')
     while True:
@@ -110,4 +109,7 @@ for i in range(0, 16):
             'has_mortgage': has_mortgage[i]
             })
 
-df.to_csv('BakuApartmentData')
+    df.to_csv(csv_name[i])
+    BakuApartmentData = pd.concat([BakuApartmentData, df], ignore_index=True)
+
+BakuApartmentData.to_csv('BakuApartmentData')
